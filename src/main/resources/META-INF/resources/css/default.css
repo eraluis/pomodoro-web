@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 85% !important;
+}
+/***Color palete
+http://www.colourlovers.com/home/trends/interior-looks/7895/Pear_Bathroom
+***/
+
+/* body{ */
+/* 	float:none; */
+/* 	width: 1024px; 1280x800-1024x768-800x600 */
+/* 	/*height: 768px;*/ */
+/* 	margin: 0 auto !important; */
+/* } */
+
+body {
+	margin:50px 0px; padding:0px;
+	text-align:center;
+	}
+
+.ui-datatable td,.ui-datatable th {
+    white-space: normal;
+}
+
+#content {
+	width:1024px;
+	height:800px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+	border:1px dashed #333;
+	background-color: #FAFAFA;
+	}
+
+.center {
+  width: 300px ;
+  margin-left: auto;
+  margin-right: auto;
+  border:1px dashed #333;
+}
+
+h1{ 
+	text-align: center;	
+	color: #C4C4C4;
+}
+
+h2{ 
+	color: #97C2E6;
+}
+.text_line
+{
+	clear:both;
+	padding-top: 10px;
+}

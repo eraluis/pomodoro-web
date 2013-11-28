@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"  >
+
+<h:head>
+	<title>PomodoroWeb</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<link rel="stylesheet" type="text/css" href="#{resource['css:default.css']}" />
+</h:head>
+<h:body>
+	<div id="content">
+		<h1>My Pomodoro Web</h1>
+			<h:form>
+				<p:growl id="messages" />  
+				<h:panelGrid id="login" columns="2" rendered="#{!identity.loggedIn}" style="margin-left: auto; margin-right: auto;">			
+					<h:outputLabel for="name" value="Username" />
+					<h:inputText id="name" value="#{loginCredentials.userId}"/>
+					
+					<h:outputLabel for="password" value="Password" />
+					<h:inputSecret id="password" value="#{loginCredentials.password}" redisplay="true"/>
+					
+					<h:outputLabel value="" />
+					<h:panelGrid columns="3">
+						<h:commandButton value="login" action="#{loginController.login}" update="logout, messages" />
+						<h:outputLabel value=" " />
+						<p:commandLink value="Crete user" type="button" onclick="dlg.show()" /> 
+					</h:panelGrid>											
+				</h:panelGrid>
+				
+				<h:panelGrid id="logout" style="margin-left: auto; margin-right: auto;" >
+					<ui:fragment rendered="#{identity.loggedIn}">
+						Welcome, #{identity.agent.loginName} 
+						<h:commandButton value="Log out" action="#{identity.logout}"/>
+						<h:button outcome="pomodoro" value="home"/>
+					</ui:fragment>					
+				</h:panelGrid>
+			</h:form>
+			
+		<p:dialog header="Create user"  resizable="false" widgetVar="dlg" >  
+			<h:form>
+				<h:panelGrid columns="2">
+				  <h:outputLabel for="loginName" value="Login Name" />
+				<h:inputText id="loginName" value="#{adminIdmController.user.loginName}" />	
+				
+				<h:outputLabel for="firstName" value="First Name" />
+				<h:inputText id="firstName" value="#{adminIdmController.user.firstName}" />
+				
+				<h:outputLabel for="lastName" value="Last Name" />
+				<h:inputText id="lastName" value="#{adminIdmController.user.lastName}" />
+				
+				<h:outputLabel for="email" value="Email" />
+				<h:inputText id="email" value="#{adminIdmController.user.email}" />
+				
+				<h:outputLabel value="" />
+				<h:commandButton value="Add" action="#{adminIdmController.addUser()}"/>	
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>  
+		<!-- <h:outputLabel value="contextPath: " /> -->
+		<!-- <h:outputText value="#{request.contextPath}" /> -->
+	</div>				
+</h:body>
+</html>
